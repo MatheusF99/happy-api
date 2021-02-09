@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "apihappy",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -15,5 +15,16 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusF99/happy-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/MatheusF99/happy-api/issues"
+  },
+  "homepage": "https://github.com/MatheusF99/happy-api#readme",
+  "description": ""
 }

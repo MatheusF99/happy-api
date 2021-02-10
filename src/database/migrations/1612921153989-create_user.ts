@@ -9,7 +9,7 @@ export class createUser1612921153989 implements MigrationInterface {
           {
             //coluna ID
             name: 'id',
-            type:'interger',
+            type:'integer',
             unsigned: true, //essa coluna nao pode ser negativa
             isPrimary: true, //essa coluna é uma PK
             isGenerated: true, //essa coluna vai ser gerada automaticamente
@@ -19,11 +19,20 @@ export class createUser1612921153989 implements MigrationInterface {
             name: 'name',
             type: 'varchar'
           },
+          {
+            name: 'phone',
+            type: 'integer'
+          },
+          {
+            name: 'email',
+            type: 'varchar'
+          },
         ]
       }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('users')
     }
 
 }

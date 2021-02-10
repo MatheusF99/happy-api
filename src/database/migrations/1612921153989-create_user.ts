@@ -21,7 +21,7 @@ export class createUser1612921153989 implements MigrationInterface {
           },
           {
             name: 'phone',
-            type: 'integer'
+            type: 'number'
           },
           {
             name: 'email',

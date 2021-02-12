@@ -3,11 +3,11 @@ import Users from '../models/Users'
 import { getRepository } from 'typeorm'
 
 export default {
-    async index(req: Request, res:Response){
-        const userRepository = getRepository(Users)
+  async index(req: Request, res:Response){
+    const userRepository = getRepository(Users)
 
-        const users = await userRepository.find()
+    const users = await userRepository.find()
 
-        return res.json(users)
-    }
+    return res.json(users)
+  }
 }

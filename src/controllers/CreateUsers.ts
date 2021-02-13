@@ -10,7 +10,10 @@ export default {
 			email
 		} = req.body
 
+    console.log(name);
+
 		const userRepository = getRepository(Users)
+    
 
 		const user = userRepository.create({
 			name,
@@ -19,6 +22,8 @@ export default {
 		})
 
 		await userRepository.save(user)
+
+    
 
 		return(
 			res.status(201).json(user)

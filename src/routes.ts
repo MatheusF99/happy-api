@@ -6,9 +6,11 @@ import CreateUser from './controllers/CreateUsers'
 import ListUsers from './controllers/ListUsers'
 import ShowUsers from './controllers/ShowUsers'
 
-const upload = multer(uploadConfig)
+
 
 const routes = Router()
+
+const upload = multer(uploadConfig)
 
 routes.post('/users', CreateUser.create)
 routes.get('/users', ListUsers.index)

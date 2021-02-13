@@ -7,11 +7,11 @@ export default class Users{
     id: number
 
     @Column()
-    name: String
+    name: string
 
     @Column()
-    phone: Number
+    phone: number
 
     @Column()
-    email: String
+    email: string
 }

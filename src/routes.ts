@@ -12,8 +12,8 @@ const routes = Router()
 
 const upload = multer(uploadConfig)
 
-routes.post('/users', CreateUser.create)
+routes.post('/users',upload.array('images'), CreateUser.create)
 routes.get('/users', ListUsers.index)
-routes.get('/users/:id', upload.array('images'),ShowUsers.show)
+routes.get('/users/:id',ShowUsers.show)
 
 export default routes

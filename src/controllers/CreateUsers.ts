@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import Users from '../models/Users'
 import { getRepository } from 'typeorm'
+import Users from '../models/Users';
 
 export default {
 	async create(req: Request, res:Response){

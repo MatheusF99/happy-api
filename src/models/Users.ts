@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
 
-@Entity('Users')
+@Entity('users')
 export default class Users{
     //colocar os campos da tabela
     @PrimaryGeneratedColumn('increment')

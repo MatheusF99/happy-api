@@ -10,23 +10,26 @@ export default {
 			email
 		} = req.body
 
-    console.log(name);
+    console.log(req.body);
 
-		const userRepository = getRepository(Users)
-    
+    try {
+      const userRepository = getRepository(Users)
+      
 
-		const user = userRepository.create({
-			name,
-			phone,
-			email
-		})
+      const user = userRepository.create({
+        name,
+        phone,
+        email
+      })
 
-		await userRepository.save(user)
+      await userRepository.save(user)
 
-    
-
-		return(
-			res.status(201).json(user)
-		)  
+      return(
+        res.status(201).json(user)
+      )  
+    } catch (error) {
+      console.log(error)
+    }
+		
 	}
 }

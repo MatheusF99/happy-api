@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm'
-import Images from './image'
+import Image from './image'
 
 @Entity('users')
-export default class Users{
+export default class User{
     //colocar os campos da tabela
     @PrimaryGeneratedColumn('increment')
     id: number
@@ -16,9 +16,9 @@ export default class Users{
     @Column()
     email: string
 
-    @OneToMany(()=> Images, images => images.user, {
+    @OneToMany(()=> Image, image => image.user, {
       cascade: ['insert', 'update']
     })
     @JoinColumn({name: 'user_id'})
-    images: Images[]
+    images: Image[]
 }

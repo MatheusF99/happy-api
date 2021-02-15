@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
-import Users from '../models/Users';
+import users from '../models/Users';
 
 export default {
 	async create(req: Request, res:Response){
@@ -14,22 +14,21 @@ export default {
     
     console.log(req.body);
 
-    const requestImage = req.files as Express.Multer.File[]
+    /*const requestImage = req.files as Express.Multer.File[]
     const images = requestImage.map(image => {
       return {path: image.filename}
     })
 
-    console.log(images);
+    console.log(images);*/
 
     try {
 
-      const userRepository = getRepository(Users)
+      const userRepository = getRepository(users)
       
       const user = userRepository.create({
         name,
         phone,
-        email,
-        images
+        email
       })
 
       await userRepository.save(user)

@@ -9,7 +9,7 @@ export default class Images{
     @Column()
     path: string
 
-    @ManyToOne( () => Users, users => users.images )
+    @ManyToOne( () => Users, user => user.images )
     @JoinColumn({name: 'user_id'})
-    users: Users 
+    user: Users 
 }

@@ -16,7 +16,7 @@ export default class Users{
     @Column()
     email: string
 
-    @OneToMany(()=> Images, image => image.users, {
+    @OneToMany(()=> Images, images => images.user, {
       cascade: ['insert', 'update']
     })
     @JoinColumn({name: 'user_id'})

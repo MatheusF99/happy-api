@@ -6,7 +6,9 @@ export default {
   async index(req: Request, res:Response){
     const userRepository = getRepository(Users)
 
-    const users = await userRepository.find()
+    const users = await userRepository.find({
+      relations:['images']
+    })
 
     return res.json(users)
   }

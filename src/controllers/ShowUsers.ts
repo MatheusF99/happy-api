@@ -11,7 +11,9 @@ export default {
 
         const userRepository = getRepository(Users)
 
-        const user = await userRepository.findOneOrFail(id)
+        const user = await userRepository.findOneOrFail(id, {
+          relations: ['images']
+        })
 
         return res.json(user)
     }

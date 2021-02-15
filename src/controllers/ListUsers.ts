@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import Users from '../models/Users'
 import { getRepository } from 'typeorm'
+import userView from '../views/users_view'
 
 export default {
   async index(req: Request, res:Response){
@@ -10,6 +11,6 @@ export default {
       relations:['images']
     })
 
-    return res.json(users)
+    return res.json(userView.renderMany(users))
   }
 }

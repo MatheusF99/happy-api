@@ -1,12 +1,13 @@
 import { Request, Response } from 'express'
 import Users from '../models/Users'
 import { getRepository } from 'typeorm'
+import userView from '../views/users_view'
 
 export default {
     async show(req: Request, res:Response){
 
         const {
-            id
+            id,
         } = req.params
 
         const userRepository = getRepository(Users)
@@ -15,6 +16,6 @@ export default {
           relations: ['images']
         })
 
-        return res.json(user)
+        return res.json(userView.render(user))
     }
 }

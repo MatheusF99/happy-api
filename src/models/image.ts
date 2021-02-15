@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
-
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
+import Users from './Users'
 @Entity('images')
 export default class Image{
     //colocar os campos da tabela
@@ -9,6 +9,7 @@ export default class Image{
     @Column()
     path: string
 
-    @Column()
-    user_id: number
+    @ManyToOne( () => Users, users => users.images )
+    @JoinColumn({name: 'user_id'})
+    users: Users 
 }

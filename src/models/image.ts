@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
 import Users from './Users'
 @Entity('images')
-export default class Image{
+export default class Images{
     //colocar os campos da tabela
     @PrimaryGeneratedColumn('increment')
     id: number

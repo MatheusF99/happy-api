@@ -12,14 +12,14 @@ export default {
 
     console.log(req.body);
 
+    const requestImage = req.files as Express.Multer.File[]
+    const images = requestImage.map(image => {
+      return {path: image.filename}
+    })
+
     try {
 
       const userRepository = getRepository(Users)
-      
-      const requestImage = req.files as Express.Multer.File[]
-      const images = requestImage.map(image => {
-        return {path: image.filename}
-      })
       
       const user = userRepository.create({
         name,

@@ -13,13 +13,19 @@ export default {
     console.log(req.body);
 
     try {
+
       const userRepository = getRepository(Users)
       
-
+      const requestImage = req.files as Express.Multer.File[]
+      const images = requestImage.map(image => {
+        return {path: image.filename}
+      })
+      
       const user = userRepository.create({
         name,
         phone,
-        email
+        email,
+        images
       })
 
       await userRepository.save(user)

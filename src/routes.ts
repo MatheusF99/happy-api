@@ -12,7 +12,7 @@ const routes = Router()
 
 const upload = multer(uploadConfig)
 
-routes.post('/users',upload.array('images'), CreateUser.create)
+routes.post('/users', upload.array('images'), CreateUser.create)
 routes.get('/users', ListUsers.index)
 routes.get('/users/:id',ShowUsers.show)
 

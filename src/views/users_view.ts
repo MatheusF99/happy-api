@@ -1,17 +1,17 @@
 import User from '../models/Users'
-import imageView from  './image_view'
+import imageView from './image_view'
 
 export default {
-  render(user: User){
-    return{
+  render(user: User) {
+    return {
       id: user.id,
       name: user.name,
-      phone: user.phone,
       email: user.email,
+      phone: user.password,
       images: imageView.renderMany(user.images)
     }
   },
-  renderMany(users: User[]){
+  renderMany(users: User[]) {
     return users.map(user => this.render(user))
   }
 }

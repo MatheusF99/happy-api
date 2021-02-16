@@ -12,4 +12,5 @@ app.use(routes)
 
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
 
-app.listen(3333)
+app.listen(3333, () => console.log(' 🔥 Server started by http://localhost:3333'))
+

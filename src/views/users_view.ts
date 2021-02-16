@@ -4,10 +4,8 @@ import imageView from './image_view'
 export default {
   render(user: User) {
     return {
-      id: user.id,
       name: user.name,
       email: user.email,
-      phone: user.password,
       images: imageView.renderMany(user.images)
     }
   },

@@ -1,8 +1,10 @@
 import { Router } from 'express'
 import multer from 'multer'
+
+import authMiddleware from './middleware/authMiddleware'
+
 import uploadConfig from './config/upload'
 import AuthController from './controllers/AuthController'
-
 import CreateUser from './controllers/CreateUsers'
 import ListUsers from './controllers/ListUsers'
 import ShowUsers from './controllers/ShowUsers'

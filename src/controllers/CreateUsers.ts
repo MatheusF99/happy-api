@@ -10,14 +10,10 @@ export default {
       password
     } = req.body
 
-    console.log(req.body);
-
     const requestImage = req.files as Express.Multer.File[]
     const images = requestImage.map(image => {
       return { path: image.filename }
     })
-
-    console.log(images);
 
     try {
 
@@ -39,7 +35,7 @@ export default {
       await userRepository.save(user)
 
       return (
-        res.status(201).json(user)
+        res.status(201).json({ "User create": "201" })
       )
     } catch (error) {
       console.log(error)

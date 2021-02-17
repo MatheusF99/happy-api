@@ -16,10 +16,10 @@ export default function authMiddleware(
     return res.sendStatus(401)
   }
 
-  const token = authorization.replace('bearer', '').trim()
+  const token = authorization.replace('Bearer', '').trim()
 
   try {
-    const data = jwt.verify(token, 'secret',)
+    const data = jwt.verify(token, 'secret')
 
     const { id } = data as tokenProps
 

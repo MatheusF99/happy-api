@@ -5,8 +5,8 @@ import bcrypt from 'bcryptjs'
 @Entity('users')
 export default class User {
   //colocar os campos da tabela
-  @PrimaryGeneratedColumn('increment')
-  id: number
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
   @Column()
   name: string

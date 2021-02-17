@@ -12,7 +12,7 @@ export default {
     })
 
     return (
-      res.json(userView.renderMany(users)).send({ userID: req.userId })
+      res.json(userView.renderMany(users))
     )
   }
 }

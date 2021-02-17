@@ -17,7 +17,7 @@ const upload = multer(uploadConfig)
 
 routes.post('/users', upload.array('images'), CreateUser.create)
 routes.post('/auth', AuthController.authenticate)
-routes.get('/users', authMiddleware, ListUsers.index)
+routes.get('/users', ListUsers.index)
 routes.get('/users/:id', authMiddleware, ShowUsers.show)
 
 export default routes

@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn, BeforeInsert, BeforeUpdate } from 'typeorm'
 import Image from './Image'
-import bcrypt from 'bcryptjs'
+import bcrypt, { genSaltSync } from 'bcryptjs'
 
 @Entity('users')
 export default class User {
@@ -16,10 +16,12 @@ export default class User {
 
   @Column()
   password: string
+
   @BeforeInsert()
   @BeforeUpdate()
   hashPassword() {
-    this.password = bcrypt.hashSync(this.password, 8)
+    console.log(this.password, this.email)
+    this.password = bcrypt.hashSync(this.password, genSaltSync(10))
   }
 
   @OneToMany(() => Image, image => image.user, {

@@ -1,3 +1,4 @@
+import dotenv from 'dotenv'
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 
@@ -6,6 +7,8 @@ interface tokenProps {
   iat: number,
   exp: number
 }
+
+dotenv.config()
 
 export default function authMiddleware(
   req: Request, res: Response, next: NextFunction
@@ -19,7 +22,7 @@ export default function authMiddleware(
   const token = authorization.replace('Bearer', '').trim()
 
   try {
-    const data = jwt.verify(token, 'secret')
+    const data = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
 
     const { id } = data as tokenProps
 

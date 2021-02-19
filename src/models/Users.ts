@@ -20,8 +20,8 @@ export default class User {
   @BeforeInsert()
   @BeforeUpdate()
   hashPassword() {
-    console.log(this.password, this.email)
     this.password = bcrypt.hashSync(this.password, genSaltSync(10))
+    console.log(this.password, this.email)
   }
 
   @OneToMany(() => Image, image => image.user, {

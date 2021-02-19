@@ -1,3 +1,4 @@
+import dotenv from 'dotenv'
 import { Request, Response } from 'express'
 import { getRepository, Repository } from 'typeorm'
 import bcrypt from 'bcryptjs'
@@ -5,31 +6,39 @@ import jwt from 'jsonwebtoken'
 
 import User from '../models/Users';
 
+dotenv.config()
 
-export default {
+
+
+
+class AuthController {
   async authenticate(req: Request, res: Response) {
 
     const userRepository = getRepository(User)
 
     const {
-      name,
       email,
       password
     } = req.body
 
+
+
     const user = await userRepository.findOne({ where: { email } })
 
+
     if (!user) {
-      res.sendStatus(401)
+      res.sendStatus(400).send('email nao encontrado')
     }
 
     const isValidPassword = await bcrypt.compare(password, user.password)
 
     if (!isValidPassword) {
-      return res.sendStatus(401)
+      return res.sendStatus(400).send('Senha incorreta')
     }
 
-    const token = jwt.sign({ id: user.id }, 'secret', { expiresIn: '1d' })
+    delete user.password
+
+    const token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
 
     return res.json({
       user,
@@ -37,3 +46,5 @@ export default {
     })
   }
 }
+
+export default new AuthController()

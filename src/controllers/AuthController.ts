@@ -8,9 +8,6 @@ import User from '../models/Users';
 
 dotenv.config()
 
-
-
-
 class AuthController {
   async authenticate(req: Request, res: Response) {
 

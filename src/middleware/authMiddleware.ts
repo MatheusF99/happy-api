@@ -24,10 +24,11 @@ export default function authMiddleware(
   const { authorization } = req.headers
 
   if (!authorization) {
-    return res.sendStatus(401)
+    return res.sendStatus(401).send({ error: 'No token provider' })
   }
 
-  const token = authorization.replace('Bearer', '').trim()
+  //token vai receber o authorizatino e tira o Bearer e o espaco depois dele
+  const token = authorization.replace('Bearer', ' ').trim()
 
   try {
     const data = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)

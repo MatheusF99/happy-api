@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import { getRepository, Repository } from 'typeorm'
 import User from '../models/Users';
+import GenerateCreateToken from './GenerateToken';
 
 export default {
   async create(req: Request, res: Response) {
@@ -32,10 +33,13 @@ export default {
         images
       })
 
+      const token = GenerateCreateToken(user.id)
+
       await userRepository.save(user)
 
       return (
-        res.status(201).json({ "User create": "201" })
+        res.status(201).json({ "User create": "201" }
+        ).send({ user, token })
       )
     } catch (error) {
       console.log(error)

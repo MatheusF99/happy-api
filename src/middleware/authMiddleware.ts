@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
+import path from 'path'
 
 interface tokenProps {
   id: number,
@@ -8,7 +9,14 @@ interface tokenProps {
   exp: number
 }
 
-dotenv.config()
+if (process.env.ACCESS_TOKEN_SECRET) {
+  dotenv.config({
+    path: `${__dirname}/.env.${process.env.ACCESS_TOKEN_SECRET}`
+  })
+} else {
+  dotenv.config()
+}
+
 
 export default function authMiddleware(
   req: Request, res: Response, next: NextFunction

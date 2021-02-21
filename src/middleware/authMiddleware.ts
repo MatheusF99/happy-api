@@ -1,7 +1,6 @@
 import dotenv from 'dotenv'
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
-import path from 'path'
 
 interface tokenProps {
   id: number,
@@ -23,12 +22,18 @@ export default function authMiddleware(
 ) {
   const { authorization } = req.headers
 
+  console.log(authorization);
+
+
   if (!authorization) {
     return res.sendStatus(401).send({ error: 'No token provided' })
   }
 
   //token vai receber o authorizatino e tira o Bearer e o espaco depois dele
   const token = authorization.replace('Bearer', '').trim()
+
+  console.log(token);
+
 
   try {
 

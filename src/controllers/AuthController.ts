@@ -35,6 +35,7 @@ class AuthController {
       return res.sendStatus(400).send('Senha incorreta')
     }
 
+    //so para nao aparecer no return
     delete user.password
 
     //cria o token

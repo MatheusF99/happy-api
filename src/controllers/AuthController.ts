@@ -27,7 +27,7 @@ class AuthController {
       console.log('email no found');
       return res.json({
         auth: false,
-        message: "email not found"
+        error: "email not found"
       }).status(401)
 
 
@@ -37,10 +37,11 @@ class AuthController {
       const isValidPassword = await bcrypt.compare(password, user.password)
 
       if (!isValidPassword) {
+
         console.log('incorrect password');
-        return res.status(400).json({
+        return res.json({
           auth: false,
-          message: "incorect password"
+          error: "incorect password"
         }).status(401)
 
       } else {
@@ -54,9 +55,11 @@ class AuthController {
 
         // retorna as informacoes do usuario com o tokeN
         return res.json({
+
           auth: true,
           user,
           token,
+
         })
       }
     }

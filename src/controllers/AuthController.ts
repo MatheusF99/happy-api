@@ -24,7 +24,7 @@ class AuthController {
     const user = await userRepository.findOne({ where: { email } })
 
 
-    if (!user) {
+    if (!user || user == undefined) {
       res.sendStatus(400).send({ error: 'email nao encontrado' })
     }
 
@@ -38,8 +38,13 @@ class AuthController {
     //so para nao aparecer no return
     delete user.password
 
-    //cria o token
+    //cria o token, com o id e o secret, pode por um tempo limit para o token
     const token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET)
+
+    console.log(
+      user,
+      token
+    );
 
     // retorna as informacoes do usuario com o token
     return res.json({

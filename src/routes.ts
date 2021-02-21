@@ -16,8 +16,8 @@ const routes = Router()
 const upload = multer(uploadConfig)
 
 routes.post('/users', upload.array('images'), CreateUser.create)
+routes.post('/user/auth', AuthController.authenticate)
 routes.use(authMiddleware)
-routes.post('/auth', AuthController.authenticate)
 routes.get('/users', ListUsers.index)
 routes.get('/users/:id', ShowUsers.show)
 

@@ -38,8 +38,8 @@ export default {
       await userRepository.save(user)
 
       return (
-        res.status(201).json({ "User create": "201" }
-        ).send({ user, token })
+        res.status(201).json({ "User created": "201" }
+        )
       )
     } catch (error) {
       console.log(error)

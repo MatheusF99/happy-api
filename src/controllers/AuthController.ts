@@ -26,7 +26,6 @@ class AuthController {
 
       console.log('email no found');
       return res.json({
-        auth: false,
         error: "email not found"
       }).status(401)
 
@@ -40,7 +39,6 @@ class AuthController {
 
         console.log('incorrect password');
         return res.json({
-          auth: false,
           error: "incorect password"
         }).status(401)
 
@@ -51,7 +49,7 @@ class AuthController {
 
         //so para nao aparecer no return
         delete user.password
-        delete user.id
+
 
         // retorna as informacoes do usuario com o tokeN
         return res.json({

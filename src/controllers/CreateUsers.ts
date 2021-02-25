@@ -33,8 +33,6 @@ export default {
         images
       })
 
-      const token = GenerateCreateToken(user.id)
-
       await userRepository.save(user)
 
       return (
